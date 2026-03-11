@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getInventory } from "app/backend/inventory";
+import { NavLink } from "react-router";
 
 export function Inventory() {
   const [items, setItems] = useState({ results: [], page: 1 });
@@ -11,6 +12,14 @@ export function Inventory() {
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
         <header className="flex flex-col items-center gap-9">
           <h1> Inventario </h1>
+        </header>
+        <header className="flex flex-col items-center gap-9">
+          <NavLink
+            to="/inventario/agregar"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Agregar Inventario
+          </NavLink>
         </header>
         <div className="max-w-[300px] w-full space-y-6 px-4">
           <nav>
