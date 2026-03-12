@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getProducts } from "app/backend/products";
+import { createChanges } from "app/backend/inventory";
 
 export function AddInventory() {
   const [products, setProducts] = useState({ results: [], page: 1 });
@@ -21,6 +22,17 @@ export function AddInventory() {
       ...inventoryChanges,
       [event.target.id]: event.target.value,
     });
+  };
+
+  const saveChanges = () => {
+    let data = [];
+    Object.entries(inventoryChanges).forEach(function (item) {
+      data.push({
+        product_variation_id: item[0],
+        change: item[1],
+      });
+    });
+    createChanges(data, () => alert("Guardado"));
   };
 
   return (
@@ -45,12 +57,12 @@ export function AddInventory() {
         </header>
         <button
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          type="button "
+          type="button"
           onClick={search}
         >
           Buscar
         </button>
-        <div className="max-w-[300px] w-full space-y-6 px-4">
+        <div className="max-w-[700px] w-full space-y-6 px-4">
           <nav>
             <ul>
               {products.results.map((item) => (
@@ -80,6 +92,13 @@ export function AddInventory() {
               ))}
             </ul>
           </nav>
+          <button
+            type="button"
+            onClick={saveChanges}
+            class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Guardar
+          </button>
         </div>
       </div>
     </main>
