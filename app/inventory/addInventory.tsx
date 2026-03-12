@@ -54,6 +54,12 @@ export function AddInventory() {
             onChange={formChange}
             class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 hover:border-gray-400"
           />
+          <p># Desde</p>
+          <input
+            id="from_number"
+            onChange={formChange}
+            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 hover:border-gray-400"
+          />
         </header>
         <button
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
