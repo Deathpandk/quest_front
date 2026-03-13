@@ -79,3 +79,14 @@ export const put = async (path, data = {}, useAuth = false) => {
     headers: headers,
   });
 };
+
+export const patch = async (path, data = {}, useAuth = false) => {
+  let headers = {};
+  if (useAuth) {
+    headers = getAuthHeaders();
+  }
+
+  return await api.patch(path, data, {
+    headers: headers,
+  });
+};
