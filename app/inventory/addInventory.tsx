@@ -77,7 +77,7 @@ export function AddInventory() {
                   className="rounded-3xl mt-3 border border-gray-200 p-6 dark:border-gray-700 space-y-4"
                 >
                   <p className="leading-6 text-gray-700 dark:text-gray-200 text-center">
-                    {item.name}
+                    <b>({item.order ? item.order : "N/A"})</b> {item.name}
                   </p>
                   <hr />
                   {item.variations.map((variation) => (
@@ -85,7 +85,7 @@ export function AddInventory() {
                       className="leading-6 text-gray-700 dark:text-gray-200 text-center"
                       key={variation.id}
                     >
-                      {variation.name}
+                      {variation.name} ({variation.inventory ? variation.inventory : 0} Disponibles)
                       <input
                         type="number"
                         id={variation.id}
