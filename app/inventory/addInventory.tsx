@@ -33,6 +33,7 @@ export function AddInventory() {
       });
     });
     createChanges(data, () => alert("Guardado"));
+    setInventoryChanges({})
   };
 
   return (
